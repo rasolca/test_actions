@@ -26,4 +26,9 @@ jobs:
         run: |
           echo "$GITHUB_REF $GITHUB_REF_NAME ${{ github.ref }} ${{ github.ref_name }}"
           cat tmp
-        if: "github.refname == 'refs/heads/main' || startsWith(github.refname, 'refs/tags/v' )"
+        if: "github.ref_name == 'refs/heads/main'"
+      - name: Test 3
+        run: |
+          echo "$GITHUB_REF $GITHUB_REF_NAME ${{ github.ref }} ${{ github.ref_name }}"
+          cat tmp
+        if: "startsWith(github.ref_name, 'refs/tags/v')"
