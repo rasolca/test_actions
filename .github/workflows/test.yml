@@ -1,0 +1,23 @@
+name: Docs
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  doc:
+    if: "github.repository == 'rasolca/test_actions'"
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Test
+        run: |
+          echo "$GITHUB_REF $GITHUB_REF_NAME ${{ github.ref }} ${{ github.ref_name }}"
